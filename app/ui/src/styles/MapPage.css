@@ -1,0 +1,23 @@
+#searchbar{
+  display:inline-block; }
+
+.container {
+   padding-right: 0px;
+   padding-left: 0px;
+   margin-right: auto;
+   margin-left: auto;
+}
+
+#abbInput{
+ width: 50%;
+ height: 33px;
+}
+
+#searchBar{
+ padding-left: 20%;
+ padding-top: 10%;
+}
+
+#LV{
+ padding-top: 5%;
+}

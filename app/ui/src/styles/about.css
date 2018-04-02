@@ -1,0 +1,17 @@
+#aboutus-title{
+    font-family: Snell Roundhand, cursive;
+    color: rgb(10, 7, 7);
+    font-size:500%;
+    text-align: center;
+    line-height: 100%;
+    letter-spacing: 2px;
+}
+
+#Intro{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 150%;
+    line-height: 130%;
+    letter-spacing: 1px;
+    margin-left: 7.5%; 
+    margin-right: 7.5%;
+}

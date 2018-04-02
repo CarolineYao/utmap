@@ -1,0 +1,27 @@
+.account-management h3.loginTitle{
+  font-size: 200%;
+  line-height: 300%;
+}
+.account-management {
+text-align: center;
+color: #444;
+}
+
+.account-management h1{
+font-size: 200%;
+line-height: 300%;
+}
+
+#wraper{
+display: flex;
+}
+
+#login{
+margin-left: 25%;
+margin-right: 5%;
+}
+
+#signup{
+margin-left: 5%;
+margin-right: 25%;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "UTMap-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "material-ui": "^0.20.0",
+    "moment": "^2.20.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
+    "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.9",
+    "react-fullscreen": "^0.1.0",
+    "react-google-maps": "^9.4.5",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "react-select": "^1.2.1",
+    "react-tap-event-plugin": "^3.0.2",
+    "superagent": "^3.8.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.18.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.12.2",
+    "eslint-plugin-react": "^7.7.0"
+  }
+}

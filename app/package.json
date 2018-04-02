@@ -1,0 +1,12 @@
+{
+  "name": "utmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd backend && npm install && npm start & cd ui && npm start & cd database/mongodb-osx-x86_64-3.6.3/bin &&  mongod --dbpath ../data/db"
+  },
+  "proxy": "http://localhost:8000",
+  "author": "",
+  "license": "ISC"
+}
