@@ -29,6 +29,7 @@ const Map = compose(
     {props.isMarkerShown && (
       <Marker position={ props.markerLocation } />
     )}
+
   </GoogleMap>
 ));
 

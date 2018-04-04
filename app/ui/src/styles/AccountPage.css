@@ -25,3 +25,49 @@ margin-right: 5%;
 margin-left: 5%;
 margin-right: 25%;
 }
+
+#userGreeting{
+  padding-top: 4%;
+  font-size: 500%;
+  text-align: center;
+  font-family:Snell Roundhand, cursive;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+
+#userfav{
+  padding-top: 2%;
+  font-size: 250%;
+  text-align: center;
+  font-family: URW Chancery L, cursive;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+#userfavChange{
+  padding-top: 2%;
+  font-size: 200%;
+  text-align: center;
+  font-family: URW Chancery L, cursive;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+
+div.Select.is-clearable.is-searchable.Select--single{
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+#logoutbutton{
+  size: 1000%;
+  padding-top: 4%;
+  padding-left: 45%;
+}
+
+
+.btn{
+  /* padding: 12px 24px; */
+  font-size: 180%;
+  color: rgb(250, 250, 250);
+  background-color: rgb(253, 165, 202);
+  border-color: #ccc;
+}

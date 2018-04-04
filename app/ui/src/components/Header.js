@@ -20,11 +20,11 @@ const Header = () => {
       <Nav pullRight><LinkContainer to="/" exact={true}>
         <NavItem eventKey={1}>Home</NavItem>
       </LinkContainer>
-      <LinkContainer to="/map">
-        <NavItem eventKey={2}>Map</NavItem>
-      </LinkContainer>
       <LinkContainer to="/account">
         <NavItem eventKey={3}>Account</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/about">
+        <NavItem eventKey={3}>About</NavItem>
       </LinkContainer>
       </Nav>
     </Navbar>

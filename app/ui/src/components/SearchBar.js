@@ -1,29 +1,32 @@
 import '../styles/MapPage.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-class  Search extends React.Component{
-  constructor(props){
-    super(props);
+class SearchBar extends React.Component{
+  constructor(){
+    super();
     this.state = {
       selectedOption: '',
     }
   }
-handleChange = (selectedOption) => {
-  this.setState({ selectedOption });
-  
-}
-render(){
-  const { selected } = this.state.selectedOption;
-  const value = selected && selected.value;
 
-  return (
-    <Select
-      name="form-field-name"
-      value={value}
-      onChange={this.handleChange}
-      options={[
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    this.props.passAbb( selectedOption.value );
+  }
+  render() {
+    const { selectedOption } = this.state;
+    const value = selectedOption && selectedOption.value;
+
+    return (
+      <Select
+        name="form-field-name"
+        value={value}
+        onChange={this.handleChange}
+        options={[
+          
         {value: "AB", label: "AB", },
         {value: "AD", label: "AD", },
         {value: "AH", label: "AH", },
@@ -196,11 +199,14 @@ render(){
 
         {value: "XG", label: "XG", },
         {value: "ZC", label: "ZC", }
-      ]}
-    />
-  );
-}
+        ]}
+      />
+    );
+  }
 }
 
+SearchBar.propTypes={
+  passAbb: PropTypes.func.isRequired,
+}
 
-export default Search;
+export default SearchBar;

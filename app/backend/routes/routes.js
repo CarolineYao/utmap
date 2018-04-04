@@ -53,11 +53,11 @@ function locations_closest(req, res) {
             // console.log("Total items in collection ",array.length);
             // console.log("First item in collection ",array);
             var arr = array.slice(0,4);
-            console.log("Total items in collection ",arr.length);
+            console.log("Total items in collection ",arr);
             var data = {
                 name: info[0].name,
                 lat : info[0].latitude,
-                lng : info[0].longtitude,
+                lng : info[0].longitude,
                 firstName: arr[0].name,
                 firstLat : arr[0].geometry.location.lat,
                 firstLog : arr[0].geometry.location.lng,
@@ -71,7 +71,7 @@ function locations_closest(req, res) {
                 fourthLat : arr[3].geometry.location.lat,
                 fourthLog : arr[3].geometry.location.lng
             }
-            console.log("okok");
+            console.log(data.name);
             res.send(data);
         });
     })
@@ -81,15 +81,39 @@ function locations_closest(req, res) {
 /* return password of this user*/
 function users_get(req, res) {
     colU.find({User_name: req.query.username}).toArray(function(err, info){
-        var hashedPassword = passwordHash.generate(JSON.stringify(req.query.password));
+        var hashedPassword = JSON.stringify(req.query.password);
         if (err) {res.status(500); throw err;}
-        else if (info[0].password == hashedPassword){ //password correct
-            res.status(200).send(info[0].fav);
+        else if (passwordHash.verify(hashedPassword, info[0].Password)){ //password correct
+            console.log("User signed in");
+            // var data = {
+            //     fav : "BA"
+            // }
+            // res.status(200).send(data);
+            var upper = info[0].fav;
+            if(upper == null){
+                var data = {
+                    favName: ' Nothing yet ',
+                    favLat: 43.659724, 
+                    favLng: -79.396774,
+                }
+                res.send(data);
+            
+            }else{
+                colL.find({abb: upper}).toArray(function(err, result) {
+                    var data = {
+                        favName: result[0].name,
+                        favLat: result[0].latitude,
+                        favLng: result[0].longitude
+                    }
+                    res.send(data);
+                })
+        }
         } else { //invalid password or username
-            res.status(400).send("<h1>Password of username is invalid</h1>")
+            console.log("Password invalid");
+            res.status(400).send("password of username is invalid")
         }
     })
-}
+ }
 /* create a new account with username, password, favorite place(optional)*/
 function users_post(req, res) {
     var data = {
@@ -101,41 +125,39 @@ function users_post(req, res) {
             res.status(500);
             throw err;
         } else if (exist){
+            console.log("User already exist:" + data.User_name);
             res.status(400).send('<h1>username already exist</h1>');
         } else {
             colU.insertOne(data, function(err, result){
-                if (err) { 
-                    res.status(500);
-                    throw err;
-                } else{
-                    res.status(200).send('<h1>User Created<h1>');
-                }
+                console.log('User successfully created');
+                res.status(200).send('no worry');
             });
         }
     });
 }
 
-/* return favorite place of this user*/
-function fav_get(req, res) {
-    colU.find({User_name: req.query.username}).toArray(function(err, info){
-        if (err) {res.status(500); throw err;}
-        res.status(200).send(info[0].fav);
-    });
-}
 /* update favorite place of this user even if fav originally is null*/
 function fav_put(req, res){
     var favorite = req.query.fav.toUpperCase();
-    colL.findOne({abb: favorite}, function(err, exist){
+    colL.findOne({abb: favorite}, function(err, info){
         if (err) {
             res.status(500);
             throw err;
-        } else if (!exist){
+        } else if (!info){
             res.status(400).send('<h1>invalid place</h1>');
         } else {
             colU.update({User_name: req.query.username}, {$set: {fav: favorite}});
-            res.status(200).send('<h1>place added</h1>');
+            console.log("fav place for: "+req.query.username+" is " + favorite);
         }
     });
+    colL.find({abb: favorite}).toArray(function(err, result) {
+        var data = {
+            favName: result[0].name,
+            favLat: result[0].latitude,
+            favLng: result[0].longitude
+        }
+        res.status(200).send(data);
+    })
 }
 /* delete the favorite place of this user */
 function fav_delete(req, res){
@@ -161,13 +183,8 @@ module.exports = function(app, db) {
         .get(locations_closest);
     /* routes for /users */
     app.route('/users')
-        .post(users_post);
-    /* routes for /favorites */
-    app.route('/favorites')
-        .get(fav_get)
+        .post(users_post)
+        .get(users_get)
         .put(fav_put)
         .delete(fav_delete);
-    /* routes for /login */
-    app.route('/login')
-        .get(users_get)
 };
