@@ -1,3 +1,5 @@
+##UofT Map
+
 ### Features and End User Interaction
 
 The UofT Map allows the user to browse different buildings at the University as well as search for them in the search bar, either using the acronym or full name. It then displays the location on a map, which also displays all of the nearby study spaces such as libraries. The user will be able to view additional information about the study space, such as times open, which will be implemented in the backend. In the map, they can access features in the regular Google Maps interface such as street view. For more information about the app and documentation, they can navigate to the "about" page on the app.
