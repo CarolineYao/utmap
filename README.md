@@ -1,4 +1,4 @@
-##UofT Map
+## UofT Map
 
 ### Features and End User Interaction
 
